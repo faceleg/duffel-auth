@@ -1,0 +1,30 @@
+{% extends "/layouts/default.html" %}
+{% block title %}Login - {% endblock %}
+{% block content %}
+<div class="login-wrapper">
+    {% cmsblock { name: "login-form-header" } %}
+    <h1>Login</h1>
+    {% endcmsblock %}
+    {% if error %}
+    <div class="ui-widget">
+        <div class="ui-state-error ui-corner-all" style="padding: 0 .7em;">
+            <p><span class="ui-icon ui-icon-alert" style="float: left; margin-right: .3em;"></span>{{ error }}</p>
+        </div>
+    </div>
+    {% endif %}
+    <form action="" method="post">
+        <fieldset>
+            <label for="email">Email</label>
+            <input type="email" name="email" placeholder="you@domain.com" id="email" />
+        </fieldset>
+        <fieldset>
+            <label for="password">Password</label>
+            <input type="password" name="password" placeholder="your password" id="password" />
+        </fieldset>
+        <input type="submit" class="submit" value="Login" />
+    </form>
+    <p>
+        <a href="/forgot-password">Forgot password</a>
+    </p>
+</div>
+{% endblock %}
