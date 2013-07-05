@@ -3,6 +3,8 @@
   "version": "0.0.1",
   "private": true,
   "dependencies": {
-    "passport-local": "0.1.x"
+    "passport-local": "0.1.x",
+    "bcrypt": "0.5.x",
+    "mongoose": "3.6.x"
   }
 }
