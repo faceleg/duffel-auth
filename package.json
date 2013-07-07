@@ -6,11 +6,9 @@
     "controller-loader": "0.0.x",
     "nunjucks": "0.1.x",
     "nunjucks-append": "0.0.x",
-    "express": "3.2.6",
     "passport": "0.1.x",
     "passport-local": "0.1.x",
     "bcrypt": "0.7.x",
-    "connect-mongo": "0.3.x",
     "mongoose": "3.6.x"
   }
 }

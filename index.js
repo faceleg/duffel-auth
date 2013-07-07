@@ -1,6 +1,4 @@
 module.exports = {
-  addPermission: require('./lib/functions/permissions.js').addPermission,
-  permission: require('./lib/middleware/permission'),
-  authentication: require('./lib/middleware/authentication.js'),
-  initialise: require('./lib/initialise.js')
+  addPermission: require('./lib/functions/permissions').addPermission,
+  initialise: require('./lib/initialise')
 }
