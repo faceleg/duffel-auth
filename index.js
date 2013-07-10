@@ -1,6 +1,6 @@
 module.exports = {
   addPermission: require('./lib/functions/permissions').addPermission,
   initialise: require('./lib/initialise'),
-  User: require('./models/User').model,
-  UserSchema: require('./models/User').schema
+  User: require('./lib/models/User').model,
+  UserSchema: require('./lib/models/User').schema
 }
