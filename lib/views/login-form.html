@@ -25,7 +25,7 @@
         <input ng-model="user._csrf" ng-init="user._csrf = '{$ _csrf $}'" type="hidden" name="_csrf" value="{{ _csrf }}" />
         <div class="text-right">
             <a href="register" class="btn btn-info">Register</a>
-            <button ng-disabled="!user.password || !user.email" type="submit" class="btn btn-success">Login <i ng-class="{'icon-arrow-right':!submitting, 'icon-spinner icon-spin':submitting}"></i></button>
+            <button ng-disabled="!user.password || !user.email || submitting" type="submit" class="btn btn-success">Login <i ng-class="{'icon-arrow-right':!submitting, 'icon-spinner icon-spin':submitting}"></i></button>
         </div>
         <a ng-show="failedOnce" class="pull-right" href="/forgot-password">Forgot password</a>
     </form>
