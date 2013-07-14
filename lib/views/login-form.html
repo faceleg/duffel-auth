@@ -1,8 +1,3 @@
-{% append javascript %}
-<script type="text/javascript" src="/duffel-auth/javascript/applications/login/application.js"></script>
-<script type="text/javascript" src="/duffel-auth/javascript/applications/login/controllers.js"></script>
-{% endappend %}
-
 {% block content %}
 <div class="container login-wrapper" ng-app="login" ng-controller="LoginController">
     {% cmsblock { name: "login-form-header" } %}
