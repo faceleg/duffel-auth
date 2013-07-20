@@ -10,7 +10,7 @@ function LoginController($scope, $http, $window) {
     $scope.submitting = true;
     $http.post('/login', $scope.user).
       success(function(data, status, headers, config) {
-        $window.location.href = '/dashboard';
+        $window.location.href = '/';
       }).
       error(function(data, status, headers, config) {
         $scope.error = status;
