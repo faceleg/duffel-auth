@@ -12,6 +12,7 @@
   "dependencies": {
     "controller-loader": "0.0.x",
     "express": "3.x.x",
+    "connect-flash": "0.1.x",
     "nunjucks": "0.1.x",
     "nunjucks-append": "0.0.x",
     "passport": "0.1.x",
