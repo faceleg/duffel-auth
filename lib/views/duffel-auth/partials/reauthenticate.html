@@ -1,0 +1,39 @@
+<script type="text/javascript" src="/duffel-auth/javascript/services/http-auth-interceptor.js"></script>
+<script type="text/javascript" src="/duffel-auth/javascript/applications/reauthentication/application.js"></script>
+<script type="text/javascript" src="/duffel-auth/javascript/applications/reauthentication/controllers.js"></script>
+<div ng-cloak class="angular-application" application-name="reauthentication" ng-controller="ReauthenticationController">
+    <div modal="open" options="options" close="close()">
+        <div class="modal-header">
+            <h3>Please reauthenticate</h3>
+        </div>
+        <div class="modal-body" ng-controller="ReauthenticationFormController">
+            <form method="post" class="container-fluid" ng-submit="login()" novalidate>
+                <div ng-cloak ng-show="error" class="alert alert-error">
+                    <div ng-switch on="error">
+                        <div ng-switch-when="401">
+                            <strong>Invalid credentials</strong>
+                        </div>
+                        <div ng-switch-default>
+                            <strong>Unexpected Error</strong> Please try again. 
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <fieldset class="span3">
+                        <label for="email">Email</label>
+                        <input ng-model="user.email" type="email" name="email" placeholder="you@domain.com" id="email" />
+                    </fieldset>
+                    <fieldset class="span3">
+                        <label for="password">Password</label>
+                        <input ng-model="user.password" type="password" name="password" placeholder="your password" id="password" />
+                    </fieldset>
+                </div>
+                <input ng-model="user._csrf" ng-init="user._csrf = '{$ _csrf $}'" type="hidden" name="_csrf" value="{{ _csrf }}" />
+                <div class="text-right">
+                    <a class="btn btn-danger" href="/logout" target="_self">Cancel</a>
+                    <button ng-disabled="!user.password || !user.email || submitting" type="submit" class="btn btn-success">Login <i ng-class="{'icon-arrow-right':!submitting, 'icon-spinner icon-spin':submitting}"></i></button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
