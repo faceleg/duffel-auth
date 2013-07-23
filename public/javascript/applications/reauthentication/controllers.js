@@ -10,7 +10,7 @@
  * @param {Object} $timeout
  */
 function ReauthenticationController($scope, $rootScope, $http, $timeout) {
-  var POLL_FREQUENCY = 60 * 1000;
+  var POLL_FREQUENCY = 5 * 60 * 1000;
 
   /**
    * Poll the server to determine login state.
