@@ -30,7 +30,7 @@
                 </div>
                 <input ng-model="user._csrf" ng-init="user._csrf = '{$ _csrf $}'" type="hidden" name="_csrf" value="{{ _csrf }}" />
                 <div class="text-right">
-                    <a class="btn btn-danger" href="/logout" target="_self">Cancel</a>
+                    <a class="btn" href="/logout" target="_self">Cancel</a>
                     <button ng-disabled="!user.password || !user.email || submitting" type="submit" class="btn btn-success">Login <i ng-class="{'icon-arrow-right':!submitting, 'icon-spinner icon-spin':submitting}"></i></button>
                 </div>
             </form>
