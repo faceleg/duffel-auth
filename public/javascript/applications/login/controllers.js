@@ -10,7 +10,12 @@ function LoginController($scope, $http, $window) {
     $scope.submitting = true;
     $http.post('/login', $scope.user).
       success(function(data, status, headers, config) {
-        $window.location.href = '/';
+
+        // Only redirect if currently on the login page.
+        if ($window.location.pathname == '/login') {
+          return $window.location.href = '/';
+        }
+        $window.location.reload(true);
       }).
       error(function(data, status, headers, config) {
         $scope.error = status;
