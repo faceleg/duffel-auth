@@ -10,6 +10,7 @@
     }
   ],
   "dependencies": {
+    "duffel-token": "git+ssh://git@bitbucket.org/faceleg/duffel-token.git#develop",
     "controller-loader": "0.0.x",
     "express": "3.x.x",
     "connect-flash": "0.1.x",
