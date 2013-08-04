@@ -9,6 +9,7 @@
  * @param {Object} $http
  * @param {Object} $timeout
  */
+
 function ReauthenticationController($scope, $rootScope, $http, $timeout) {
   var POLL_FREQUENCY = 5 * 60 * 1000;
 
@@ -18,11 +19,11 @@ function ReauthenticationController($scope, $rootScope, $http, $timeout) {
   var checkLoginState = function() {
     $http.head('/api/login-state')
       .success(function() {
-        $timeout(checkLoginState, POLL_FREQUENCY);
-      })
+      $timeout(checkLoginState, POLL_FREQUENCY);
+    })
       .error(function(data) {
-        $rootScope.$broadcast('event:auth-loginRequired');
-      });
+      $rootScope.$broadcast('event:auth-loginRequired');
+    });
   }
   $timeout(checkLoginState, POLL_FREQUENCY);
 
@@ -49,20 +50,25 @@ function ReauthenticationController($scope, $rootScope, $http, $timeout) {
  * @param {Object} $rootScope
  * @param {Object} $http
  */
+
 function ReauthenticationFormController($scope, $rootScope, $http) {
   $scope.user = {};
   $scope.submitting = false;
 
+  $scope.$on('event:auth-loginRequired', function() {
+    $scope.submitting = false;
+    $scope.error = 401;
+  });
   $scope.login = function() {
-      $scope.error = false;
-      $scope.submitting = true;
-      $http.post('/login', $scope.user).
-        success(function(data, status, headers, config) {
-          $rootScope.$broadcast('event:auth-loginConfirmed');
-      }).
-      error(function(data, status, headers, config) {
-          $scope.error = status;
-          $scope.submitting = false;
+    $scope.error = false;
+    $scope.submitting = true;
+    $http.post('/login', $scope.user).
+    success(function(data, status, headers, config) {
+      $rootScope.$broadcast('event:auth-loginConfirmed');
+    }).
+    error(function(data, status, headers, config) {
+      $scope.error = status;
+      $scope.submitting = false;
     });
   };
 }
