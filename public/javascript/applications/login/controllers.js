@@ -2,7 +2,6 @@
 
 function LoginController($scope, $http, $window) {
   $scope.user = {};
-  $scope.failedOnce = false;
   $scope.submitting = false;
 
   $scope.login = function() {
@@ -19,7 +18,6 @@ function LoginController($scope, $http, $window) {
       }).
       error(function(data, status, headers, config) {
         $scope.error = status;
-        $scope.failedOnce = true;
         $scope.submitting = false;
     });
   };
