@@ -1,8 +1,8 @@
 'use strict';
 
-angular.module('authentication', ['User'])
+angular.module('authentication', ['user'])
 
-  .factory('authenticationService', ['$rootScope', '$http', function($rootScope, $http) {
+  .factory('authenticationService', ['User', '$rootScope', '$http', function(User, $rootScope, $http) {
     var loggedIn = false;
 
     var POLL_FREQUENCY = 5 * 60 * 1000;
@@ -12,6 +12,7 @@ angular.module('authentication', ['User'])
           $timeout(checkLoginState, POLL_FREQUENCY);
         });
     }
+
     var currentUser = User.current(function() {
       loggedIn = true;
       $rootScope.$broadcast('event:auth-loginConfirmed', currentUser);
