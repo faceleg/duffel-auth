@@ -11,21 +11,6 @@
  */
 
 function ReauthenticationController($scope, $rootScope, $http, $timeout) {
-  var POLL_FREQUENCY = 5 * 60 * 1000;
-
-  /**
-   * Poll the server to determine login state.
-   */
-  var checkLoginState = function() {
-    $http.head('/api/login-state')
-      .success(function() {
-      $timeout(checkLoginState, POLL_FREQUENCY);
-    })
-      .error(function(data) {
-      $rootScope.$broadcast('event:auth-loginRequired');
-    });
-  }
-  $timeout(checkLoginState, POLL_FREQUENCY);
 
   $scope.open = false;  // dialog initially closed
   $scope.options = {
@@ -38,19 +23,17 @@ function ReauthenticationController($scope, $rootScope, $http, $timeout) {
   });
   $scope.$on('event:auth-loginConfirmed', function() {
     $scope.open = false;
-    $timeout(checkLoginState, POLL_FREQUENCY);
   });
 };
 
 /**
- * Mange the reauthentication form.
+ * Manage the reauthentication form.
  *
  * @fires event:auth-loginConfirmed
  * @param {Object} $scope
  * @param {Object} $rootScope
  * @param {Object} $http
  */
-
 function ReauthenticationFormController($scope, $rootScope, $http) {
   $scope.user = {};
   $scope.submitting = false;
