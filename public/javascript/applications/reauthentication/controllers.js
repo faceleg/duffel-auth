@@ -9,9 +9,7 @@
  * @param {Object} $http
  * @param {Object} $timeout
  */
-
-function ReauthenticationController($scope, $rootScope, $http, $timeout) {
-
+function ReauthenticationController($scope, authenticationService) {
   $scope.open = false;  // dialog initially closed
   $scope.options = {
     dialogFade: true,
@@ -34,7 +32,7 @@ function ReauthenticationController($scope, $rootScope, $http, $timeout) {
  * @param {Object} $rootScope
  * @param {Object} $http
  */
-function ReauthenticationFormController($scope, $rootScope, $http) {
+function ReauthenticationFormController($scope, $rootScope, $http, authenticationService) {
   $scope.user = {};
   $scope.submitting = false;
 
@@ -42,20 +40,24 @@ function ReauthenticationFormController($scope, $rootScope, $http) {
     $scope.submitting = false;
     $scope.error = 401;
   });
+  $scope.$on('event:auth-loginConfirmed', function() {
+    $scope.error = false;
+    $scope.submitting = false;
+  })
   $scope.login = function() {
     $scope.error = false;
     $scope.submitting = true;
-    $http.post('/login', $scope.user).
-    success(function(data, status, headers, config) {
-      $rootScope.$broadcast('event:auth-loginConfirmed');
-    }).
-    error(function(data, status, headers, config) {
+    $scope.user =  authenticationService.login($scope.user, function(data, status) {
       $scope.error = status;
-      $scope.submitting = false;
+      $scope.submitting = true;
     });
   };
 }
 
 angular.module('reauthentication.controllers', [])
-  .controller('ReauthenticationController', ['$scope', '$rootScope', '$http', '$timeout', ReauthenticationController])
-  .controller('ReauthenticationFormController', ['$scope', '$rootScope', '$http', ReauthenticationFormController]);
+  .controller('ReauthenticationController', [
+    '$scope', 'authenticationService', ReauthenticationController
+  ])
+  .controller('ReauthenticationFormController', [
+    '$scope', '$rootScope', '$http', 'authenticationService', ReauthenticationFormController
+  ]);
