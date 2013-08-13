@@ -15,4 +15,19 @@ angular.module('user', ['ngResource'])
         params: { command: 'current' }
       }
     });
+
+    User.login = function(credentials, error) {
+
+      var user = null;
+      $http.post('/duffel-auth/api/login', credentials)
+        .success(function(data) {
+          user = new User(data);
+          $rootScope.$broadcast('event:auth-loginConfirmed', user);
+        })
+        .error(error);
+
+      return user;
+    }
+
+    return User;
 }]);
