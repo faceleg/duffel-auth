@@ -1,3 +1,3 @@
 'use strict';
 
-angular.module('login', ['login.controllers']);
+angular.module('login', ['user', 'login.controllers']);
