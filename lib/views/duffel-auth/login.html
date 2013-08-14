@@ -1,11 +1,8 @@
 {% extends "/layouts/default.html" %}
-{% append "javascript" %}
-<script type="text/javascript" src="/duffel-auth/javascript/applications/login/application.js"></script>
-<script type="text/javascript" src="/duffel-auth/javascript/applications/login/controllers.js"></script>
-{% endappend %}
 
 {% block title %}Login - {% endblock %}
 
 {% block content %}
-{% include "/duffel-auth/partials/login-form.html" %}
+    {% include "/duffel-auth/partials/login-form.html" %}
+    {$ assetify.js.emit('login-form') $}
 {% endblock %}
