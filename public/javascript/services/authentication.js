@@ -34,8 +34,8 @@
         isLoggedIn: function() {
           return loggedIn;
         },
-        login: function(credentials) {
-          currentUser = User.login(credentials);
+        login: function(credentials, error) {
+          currentUser = User.login(credentials, error);
         }
       };
     }])
