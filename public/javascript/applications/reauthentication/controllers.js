@@ -10,6 +10,7 @@
  * @param {Object} $timeout
  */
 function ReauthenticationController($scope, authenticationService) {
+  $scope.currentUser = authenticationService.currentUser();
   $scope.open = false;  // dialog initially closed
   $scope.options = {
     dialogFade: true,
@@ -32,18 +33,22 @@ function ReauthenticationController($scope, authenticationService) {
  * @param {Object} $rootScope
  * @param {Object} $http
  */
-function ReauthenticationFormController($scope, $rootScope, $http, authenticationService) {
+function ReauthenticationFormController($scope, authenticationService, $window) {
   $scope.user = {};
   $scope.submitting = false;
+  $scope.$on('event:auth-loginConfirmed', function(event, loggedInUser) {
+    // If the user logs in with different credentials, trigger a reload
+    if (loggedInUser.email != $scope.currentUser.email) {
+      return $window.location.reload(true);
+    }
+    $scope.error = false;
+    $scope.submitting = false;
+  });
 
   $scope.$on('event:auth-loginRequired', function() {
     $scope.submitting = false;
     $scope.error = 401;
   });
-  $scope.$on('event:auth-loginConfirmed', function() {
-    $scope.error = false;
-    $scope.submitting = false;
-  })
   $scope.login = function() {
     $scope.error = false;
     $scope.submitting = true;
@@ -59,5 +64,5 @@ angular.module('reauthentication.controllers', [])
     '$scope', 'authenticationService', ReauthenticationController
   ])
   .controller('ReauthenticationFormController', [
-    '$scope', '$rootScope', '$http', 'authenticationService', ReauthenticationFormController
+    '$scope', 'authenticationService', '$window', ReauthenticationFormController
   ]);
