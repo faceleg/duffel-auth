@@ -54,8 +54,9 @@ angular.module('authentication', ['user'])
         function error(response) {
           if (response.status === 401) {
             $rootScope.$broadcast('event:auth-loginRequired');
+            return $q.reject(response);
           }
-          return $q.reject(response);
+          return $q;
         }
 
         return function(promise) {
