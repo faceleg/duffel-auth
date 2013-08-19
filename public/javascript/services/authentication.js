@@ -10,7 +10,7 @@ angular.module('authentication', ['user'])
     var checkLoginState = function() {
       $http.head('/duffel-auth/api/login-state')
         .success(function() {
-        $timeout(checkLoginState, POLL_FREQUENCY);
+          $timeout(checkLoginState, POLL_FREQUENCY);
       });
     }
 
@@ -38,10 +38,10 @@ angular.module('authentication', ['user'])
   }
 ])
 
-/**
- * $http interceptor.
- * On 401 response  broadcasts 'event:auth-loginRequired'.
- */
+  /**
+   * $http interceptor.
+   * On 401 response  broadcasts 'event:auth-loginRequired'.
+   */
   .config(['$httpProvider',
   function($httpProvider) {
 
