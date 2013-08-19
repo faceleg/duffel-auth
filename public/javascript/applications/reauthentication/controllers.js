@@ -49,7 +49,7 @@ function ReauthenticationFormController($scope, $rootScope, $http, authenticatio
     $scope.submitting = true;
     $scope.user =  authenticationService.login($scope.user, function(data, status) {
       $scope.error = status;
-      $scope.submitting = true;
+      $scope.submitting = false;
     });
   };
 }
