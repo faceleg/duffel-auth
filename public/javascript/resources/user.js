@@ -6,7 +6,7 @@ angular.module('user', ['ngResource'])
     var User = $resource('/duffel-auth/api/users/:id:command', {
       id : '@id' //this binds the ID of the model to the URL
     }, {
-      query: { method: 'GET', isArray: true }, //this can also be called index or all
+      query: { method: 'GET', isArray: true },
       save: { method: 'PUT' },
       create: { method: 'POST' },
       destroy: { method: 'DELETE' },
