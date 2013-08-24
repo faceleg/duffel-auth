@@ -10,17 +10,19 @@
                     <strong>Invalid credentials</strong>
                 </div>
                 <div ng-switch-default>
-                    <strong>Unexpected Error</strong> Please try again. 
+                    <strong>Unexpected Error</strong> Please try again.
                 </div>
             </div>
         </div>
         <fieldset>
             <label for="email">Email</label>
-            <input ng-model="user.email" type="email" name="email" placeholder="you@domain.com" id="email" />
+            <input ng-model="user.email" type="email" name="email"
+                placeholder="you@domain.com" id="email" />
         </fieldset>
         <fieldset>
             <label for="password">Password</label>
-            <input ng-model="user.password" type="password" name="password" placeholder="your password" id="password" />
+            <input ng-model="user.password" type="password" name="password"
+                placeholder="your password" id="password" />
         </fieldset>
         <input ng-model="user._csrf" ng-init="user._csrf = '{$ _csrf $}'"
             type="hidden" name="_csrf" value="{$ _csrf $}" />
