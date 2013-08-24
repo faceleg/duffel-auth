@@ -1,0 +1,13 @@
+{% extends "/layouts/default.html" %}
+
+{% block title %}Edit User - {% endblock %}
+
+{% block content %}
+    <div class="duffel-admin-wrapper">
+        <h1 class="text-center">Edit User</h1>
+        <div class="angular-application" application-name="admin-users"
+            ng-controller="EditController">
+        </div>
+    </div>
+    {$ assetify.js.emit('duffel-auth-admin') $}
+{% endblock %}
