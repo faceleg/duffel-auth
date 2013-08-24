@@ -3,5 +3,6 @@ module.exports = {
   addPermission: require('./lib/functions/permissions').addPermission,
   User: function() {
     return require('./lib/models/User').model()
-  }
+  },
+  UserFormatter: require('./lib/models/formatters/UserFormatter')
 }
