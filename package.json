@@ -20,6 +20,8 @@
     "passport-local": "0.1.x",
     "bcrypt": "0.7.x",
     "mongoose": "3.6.x",
-    "validator": "1.2.x"
+    "validator": "1.2.x",
+    "forms": "0.2.x",
+    "underscore": "1.5.x"
   }
 }
