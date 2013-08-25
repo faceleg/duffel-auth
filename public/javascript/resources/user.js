@@ -12,7 +12,9 @@ angular.module('user', ['ngResource'])
       destroy: { method: 'DELETE' },
       current: {
         method: 'GET',
-        params: { command: 'current' }
+        // Duffel permissions inherit, so current user endpoint must be different
+        // to the index endpoint - index has different permission.
+        url: '/duffel-auth/api/users-current'
       }
     });
 
