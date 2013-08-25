@@ -19,7 +19,14 @@ function IndexController($scope, User) {
   ];
 };
 
+function EditController($scope, User) {
+
+}
+
 angular.module('admin-users.controllers', [])
   .controller('IndexController', [
     '$scope', 'User', IndexController
+  ])
+  .controller('EditController', [
+    '$scope', 'User', EditController
   ]);
