@@ -22,6 +22,7 @@
     "mongoose": "3.6.x",
     "validator": "1.2.x",
     "forms": "0.2.x",
-    "underscore": "1.5.x"
+    "underscore": "1.5.x",
+    "string": "1.5.x"
   }
 }
