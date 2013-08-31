@@ -1,6 +1,6 @@
 {
   "name": "duffel-auth",
-  "version": "0.0.9",
+  "version": "0.1.0",
   "author": "Michael Robinson <mike@pagesofinterest.net>",
   "description": "Provides user management and the ability to protect resources with permission based access control",
   "contributors": [
@@ -14,7 +14,7 @@
     "controller-loader": "0.0.x",
     "express": "3.x.x",
     "connect-flash": "0.1.x",
-    "nunjucks": "master",
+    "nunjucks": "git://github.com/jlongster/nunjucks.git#master",
     "passport": "0.1.x",
     "passport-local": "0.1.x",
     "bcrypt": "0.7.x",
