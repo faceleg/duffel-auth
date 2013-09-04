@@ -1,6 +1,6 @@
 {
   "name": "duffel-auth",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "author": "Michael Robinson <mike@pagesofinterest.net>",
   "description": "Provides user management and the ability to protect resources with permission based access control",
   "contributors": [
@@ -9,8 +9,12 @@
       "email": "mike@pagesofinterest.net"
     }
   ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/BrownPaperBag/duffel-auth"
+  },
   "dependencies": {
-    "duffel-token": "0.x.x",
+    "duffel-token": "0.0.x",
     "controller-loader": "0.0.x",
     "express": "3.x.x",
     "connect-flash": "0.1.x",
