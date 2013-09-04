@@ -1,6 +1,6 @@
 {
   "name": "duffel-auth",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "author": "Michael Robinson <mike@pagesofinterest.net>",
   "description": "Provides user management and the ability to protect resources with permission based access control",
   "contributors": [
@@ -10,7 +10,7 @@
     }
   ],
   "dependencies": {
-    "duffel-token": "git+ssh://git@bitbucket.org/faceleg/duffel-token.git#develop",
+    "duffel-token": "0.x.x",
     "controller-loader": "0.0.x",
     "express": "3.x.x",
     "connect-flash": "0.1.x",
