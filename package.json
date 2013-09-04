@@ -16,7 +16,7 @@
   "dependencies": {
     "duffel-token": "0.0.x",
     "controller-loader": "0.0.x",
-    "express": "3.x.x",
+    "express": "3.3.x",
     "connect-flash": "0.1.x",
     "nunjucks": "git://github.com/jlongster/nunjucks.git#master",
     "passport": "0.1.x",
