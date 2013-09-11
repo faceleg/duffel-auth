@@ -15,7 +15,7 @@ function LoginController($scope, User, $window) {
   $scope.login = function() {
     $scope.error = false;
     $scope.submitting = true;
-    User.login($scope.user, function(data, error) {
+    User.login($scope.user, function(error, status) {
         $scope.error = status;
         $scope.submitting = false;
     });
