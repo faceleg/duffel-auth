@@ -28,7 +28,7 @@
             type="hidden" name="_csrf" value="{$ _csrf $}" />
         <div class="text-right">
             <a target="_self" href="/register" class="btn btn-info">Register</a>
-            <button ng-disabled="!user.password || !user.email || submitting" type="submit" class="btn btn-success">Login <i ng-class="{'icon-arrow-right':!submitting, 'icon-spinner icon-spin':submitting}"></i></button>
+            <button type="submit" class="btn btn-success">Login <i ng-class="{'icon-arrow-right':!submitting, 'icon-spinner icon-spin':submitting}"></i></button>
         </div>
         <a target="_self" class="pull-right" href="/forgot-password">Forgot password</a>
     </form>
