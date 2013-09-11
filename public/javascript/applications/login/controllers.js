@@ -7,7 +7,7 @@ function LoginController($scope, User, $window) {
   $scope.$on('event:auth-loginConfirmed', function() {
       // Only redirect if currently on the login page.
       if ($window.location.pathname == '/login') {
-        return $window.location.href = '/';
+        return $window.location.href = $scope.redirectUri;
       }
       $window.location.reload(true);
   });
