@@ -1,28 +1,34 @@
 'use strict';
 
-function LoginController($scope, User, $window) {
+function LoginController($scope, User, $window, $cookies, $cookieStore) {
   $scope.user = {};
   $scope.submitting = false;
 
   $scope.$on('event:auth-loginConfirmed', function() {
-      // Only redirect if currently on the login page.
-      if ($window.location.pathname == '/login') {
-        return $window.location.href = $scope.redirectUri;
-      }
-      $window.location.reload(true);
+    var REDIRECT_COOKIE = 'duffel-auth-redirect',
+      redirectUri = $cookies[REDIRECT_COOKIE];
+
+    if (redirectUri) {
+      $cookieStore.remove(REDIRECT_COOKIE);
+      return $window.location.href = redirectUri;
+    }
+    if ($window.location.pathname == '/login') {
+      return $window.location.href = $scope.redirectUri;
+    }
+    $window.location.reload(true);
   });
 
   $scope.login = function() {
     $scope.error = false;
     $scope.submitting = true;
     User.login($scope.user, function(error, status) {
-        $scope.error = status;
-        $scope.submitting = false;
+      $scope.error = status;
+      $scope.submitting = false;
     });
   };
 };
 
 angular.module('login.controllers', [])
   .controller('LoginController', [
-    '$scope', 'User', '$window', LoginController
-  ]);
+    '$scope', 'User', '$window', '$cookies', '$cookieStore', LoginController
+]);
