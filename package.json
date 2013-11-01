@@ -13,6 +13,10 @@
     "type": "git",
     "url": "https://github.com/BrownPaperBag/duffel-auth"
   },
+  "devDependencies": {
+    "mocha": "",
+    "should": ""
+  },
   "dependencies": {
     "duffel-token": "0.0.x",
     "controller-loader": "0.0.x",
@@ -27,5 +31,8 @@
     "forms": "0.2.x",
     "underscore": "1.5.x",
     "string": "1.5.x"
+  },
+  "scripts": {
+    "test": "mocha $(find tests -name '*.js') -R spec"
   }
 }
