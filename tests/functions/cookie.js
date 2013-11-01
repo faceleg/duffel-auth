@@ -2,7 +2,8 @@ var should = require('should'),
   cookieFunctions = require('../../lib/functions/cookie');
 
 describe('Coookie', function() {
-  describe('redirect after login', function() {
+
+  describe('redirectAfterLogin', function() {
     it('should call the cookie function with string arguments', function(done) {
 
       var mockResponse = {
