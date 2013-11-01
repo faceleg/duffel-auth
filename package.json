@@ -1,6 +1,6 @@
 {
   "name": "duffel-auth",
-  "version": "0.1.9",
+  "version": "0.2.0",
   "author": "Michael Robinson <mike@pagesofinterest.net>",
   "description": "Provides user management and the ability to protect resources with permission based access control",
   "contributors": [
