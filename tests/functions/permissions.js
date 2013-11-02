@@ -18,7 +18,13 @@ describe('permissions', function() {
     it('should accept three string arguments', function() {
 
       permissionsFunctions.addPermission('/test/uri', 'GET', 'test-permission');
+    });
 
+    it('should convert verb to upper case', function() {
+
+      permissionsFunctions.addPermission('/test/uri', 'get', 'test-permission');
+
+      permissionsFunctions.permissions['/test/uri'].should.have.property('GET');
     });
 
     it('should apply the given arguments to the permissions object appropriately', function() {
