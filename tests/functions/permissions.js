@@ -1,3 +1,5 @@
+/* jshint expr: true */
+
 var should = require('should'),
   rewire = require('rewire'),
   permissionsFunctions = rewire('../../lib/functions/permissions');
@@ -48,7 +50,7 @@ describe('permissions', function() {
 
       var splitPermissions = permissionsFunctions.__get__('_splitPermissionUris')(getPermissions());
 
-      splitPermissions[0]['splitUri'].should.have.length(0);
+      splitPermissions[0].splitUri.should.have.length(0);
     });
 
   });

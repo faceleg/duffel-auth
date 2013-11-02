@@ -1,3 +1,5 @@
+/* jshint expr: true */
+
 var should = require('should'),
   cookieFunctions = require('../../lib/functions/cookie');
 
