@@ -13,7 +13,7 @@ var should = require('should'),
           uri.should.have.type('string');
           done();
         }
-      }
+      };
 
       cookieFunctions.redirectAfterLogin('/test/uri', {
         cookies: {}

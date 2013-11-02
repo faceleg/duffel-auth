@@ -7,7 +7,7 @@ var should = require('should'),
  */
 getPermissions = function() {
   return permissionsFunctions.__get__('_permissions');
-}
+};
 
 /**
  * Clear the permissions object between each test.
@@ -88,8 +88,7 @@ describe('permissions', function() {
 
       getPermissions().should.have.type('object')
         .with.property('/test/uri')
-        .with.property('get', 'test-permission')
-
+        .with.property('get', 'test-permission');
     });
   });
 
