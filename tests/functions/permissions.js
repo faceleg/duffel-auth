@@ -39,13 +39,37 @@ describe('permissions', function() {
   });
 
   describe('#permissions', function() {
-
     it('should be initially empty', function() {
+
       permissionsFunctions.permissions.should.have.type('object')
         .and.be.empty;
 
     });
+  });
 
+  describe('#lookupPermissions', function() {
+
+    beforeEach(function primePermissions() {
+      permissionsFunctions.addPermission('/protected', 'GET', 'login');
+      permissionsFunctions.addPermission('/protected/further', 'GET', 'login-and-more');
+      permissionsFunctions.addPermission('/protected/further', 'PUT', 'login-and-put');
+      permissionsFunctions.addPermission('/protected/further/deeper', 'GET', 'rabbit-hole');
+    });
+
+    it('should find the permission representing the given uri and verb in the tree', function() {
+
+      permissionsFunctions.lookupPermissions('/protected/further', 'GET').should.contain('login-and-more');
+    });
+
+    it('should convert verb to upper case', function() {
+
+      permissionsFunctions.lookupPermissions('/protected/further', 'get').should.contain('login-and-more');
+    });
+
+    it('should return an empty array if no permissions were found', function() {
+
+      permissionsFunctions.lookupPermissions('/protected/further', 'del').should.be.empty;
+    });
   });
 
 });
