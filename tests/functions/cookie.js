@@ -1,9 +1,9 @@
 var should = require('should'),
   cookieFunctions = require('../../lib/functions/cookie');
 
-describe('Coookie', function() {
+  describe('cookie', function() {
 
-  describe('redirectAfterLogin', function() {
+  describe('#redirectAfterLogin(uri, req, res)', function() {
     it('should call the cookie function with string arguments', function(done) {
 
       var mockResponse = {
@@ -33,7 +33,7 @@ describe('Coookie', function() {
     });
   });
 
-  describe('parseRedirect', function() {
+  describe('#parseRedirect(req, res)', function() {
 
     it('should return the cookie\'s value if set', function() {
 
