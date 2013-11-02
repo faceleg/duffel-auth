@@ -15,7 +15,8 @@
   },
   "devDependencies": {
     "mocha": "",
-    "should": ""
+    "should": "",
+    "rewire": ""
   },
   "dependencies": {
     "duffel-token": "0.0.x",
