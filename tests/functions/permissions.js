@@ -31,6 +31,7 @@ describe('permissions', function() {
   describe('#_splitPermissionUris(permissions)', function() {
 
     it('should generate an array of the approprate length', function() {
+
       permissionsFunctions.addPermission('/protected', 'GET', 'login');
       permissionsFunctions.addPermission('/protected/further', 'GET', 'login-and-more');
       permissionsFunctions.addPermission('/protected/further', 'PUT', 'login-and-put');
@@ -52,9 +53,20 @@ describe('permissions', function() {
 
   });
 
-  describe('#_generateSimplePermissions(permissions)', function() {
+  describe('#_simplePermissions(permissions)', function() {
 
+    it('should generate an object that contains multiple permissions per uri if set', function() {
 
+      permissionsFunctions.addPermission('/', 'get', 'get');
+      permissionsFunctions.addPermission('/', 'del', 'del');
+      permissionsFunctions.addPermission('/', 'put', 'put');
+      var simplePermissions = permissionsFunctions.__get__('_simplePermissions')(getPermissions());
+
+      simplePermissions.should.have.property('/');
+      simplePermissions['/'].should.have.property('get', 'get');
+      simplePermissions['/'].should.have.property('del', 'del');
+      simplePermissions['/'].should.have.property('put', 'put');
+    });
   });
 
   describe('#addPermission(uri, verb, permission)', function() {
