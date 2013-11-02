@@ -53,7 +53,7 @@ describe('permissions', function() {
     });
   });
 
-  describe('#lookupPermissions', function() {
+  describe('#lookupPermissions()', function() {
 
     beforeEach(function primePermissions() {
       permissionsFunctions.addPermission('/protected', 'GET', 'login');
@@ -78,14 +78,27 @@ describe('permissions', function() {
     });
   });
 
-  describe('#generateSimplePermissions', function() {
+  describe('#_splitPermissionUris(permissions)', function() {
 
+    it('should generate an array of the approprate length', function() {
       permissionsFunctions.addPermission('/protected', 'GET', 'login');
       permissionsFunctions.addPermission('/protected/further', 'GET', 'login-and-more');
       permissionsFunctions.addPermission('/protected/further', 'PUT', 'login-and-put');
-      permissionsFunctions.addPermission('/protected/further/deeper', 'GET', 'rabbit-hole');
+      permissionsFunctions.addPermission('/protected/further/deeper/', 'GET', 'rabbit-hole');
 
-      console.log(permissionsFunctions.__get__('generateSimplePermissions')());
+      var splitPermissions = permissionsFunctions.__get__('_splitPermissionUris')(getPermissions());
+
+      splitPermissions.should.have.length(3);
+    });
+
+  it('should filter empty uri segments', function() {
+
+      permissionsFunctions.addPermission('/', 'GET', 'login');
+
+      var splitPermissions = permissionsFunctions.__get__('_splitPermissionUris')(getPermissions());
+
+      splitPermissions[0]['splitUri'].should.have.length(0);
+    });
 
   })
 
