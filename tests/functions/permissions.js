@@ -20,6 +20,43 @@ beforeEach(function clearPermissions() {
 
 describe('permissions', function() {
 
+  describe('#_permissions', function() {
+    it('should be initially empty', function() {
+
+      getPermissions().should.have.type('object')
+        .and.be.empty;
+    });
+  });
+
+  describe('#_splitPermissionUris(permissions)', function() {
+
+    it('should generate an array of the approprate length', function() {
+      permissionsFunctions.addPermission('/protected', 'GET', 'login');
+      permissionsFunctions.addPermission('/protected/further', 'GET', 'login-and-more');
+      permissionsFunctions.addPermission('/protected/further', 'PUT', 'login-and-put');
+      permissionsFunctions.addPermission('/protected/further/deeper/', 'GET', 'rabbit-hole');
+
+      var splitPermissions = permissionsFunctions.__get__('_splitPermissionUris')(getPermissions());
+
+      splitPermissions.should.have.length(3);
+    });
+
+  it('should filter empty uri segments', function() {
+
+      permissionsFunctions.addPermission('/', 'GET', 'login');
+
+      var splitPermissions = permissionsFunctions.__get__('_splitPermissionUris')(getPermissions());
+
+      splitPermissions[0]['splitUri'].should.have.length(0);
+    });
+
+  });
+
+  describe('#_generateSimplePermissions(permissions)', function() {
+
+
+  });
+
   describe('#addPermission(uri, verb, permission)', function() {
     it('should accept three string arguments', function() {
 
@@ -40,15 +77,6 @@ describe('permissions', function() {
       getPermissions().should.have.type('object')
         .with.property('/test/uri')
         .with.property('get', 'test-permission')
-
-    });
-  });
-
-  describe('#_permissions', function() {
-    it('should be initially empty', function() {
-
-      getPermissions().should.have.type('object')
-        .and.be.empty;
 
     });
   });
@@ -77,29 +105,5 @@ describe('permissions', function() {
       permissionsFunctions.lookupPermissions('/protected/further', 'del').should.be.empty;
     });
   });
-
-  describe('#_splitPermissionUris(permissions)', function() {
-
-    it('should generate an array of the approprate length', function() {
-      permissionsFunctions.addPermission('/protected', 'GET', 'login');
-      permissionsFunctions.addPermission('/protected/further', 'GET', 'login-and-more');
-      permissionsFunctions.addPermission('/protected/further', 'PUT', 'login-and-put');
-      permissionsFunctions.addPermission('/protected/further/deeper/', 'GET', 'rabbit-hole');
-
-      var splitPermissions = permissionsFunctions.__get__('_splitPermissionUris')(getPermissions());
-
-      splitPermissions.should.have.length(3);
-    });
-
-  it('should filter empty uri segments', function() {
-
-      permissionsFunctions.addPermission('/', 'GET', 'login');
-
-      var splitPermissions = permissionsFunctions.__get__('_splitPermissionUris')(getPermissions());
-
-      splitPermissions[0]['splitUri'].should.have.length(0);
-    });
-
-  })
 
 });
