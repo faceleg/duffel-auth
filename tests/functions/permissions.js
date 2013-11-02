@@ -1,6 +1,5 @@
 var should = require('should'),
-  permissionsFunctions = require('../../lib/functions/permissions');
-
+  permissionsFunctions = rewire('../../lib/functions/permissions');
 
 /**
  * Clear the permissions object between each test.
@@ -13,7 +12,6 @@ beforeEach(function clearPermissions() {
 
 describe('permissions', function() {
 
-
   describe('#addPermission(uri, verb, permission)', function() {
     it('should accept three string arguments', function() {
 
@@ -24,14 +22,14 @@ describe('permissions', function() {
 
       permissionsFunctions.addPermission('/test/uri', 'get', 'test-permission');
 
-      permissionsFunctions.permissions['/test/uri'].should.have.property('GET');
+      permissionsFunctions.__get__('_permissions')['/test/uri'].should.have.property('GET');
     });
 
     it('should apply the given arguments to the permissions object appropriately', function() {
 
       permissionsFunctions.addPermission('/test/uri', 'GET', 'test-permission');
 
-      permissionsFunctions.permissions.should.have.type('object')
+      permissionsFunctions.__get__('_permissions').should.have.type('object')
         .with.property('/test/uri')
         .with.property('GET', 'test-permission')
 
@@ -41,7 +39,7 @@ describe('permissions', function() {
   describe('#permissions', function() {
     it('should be initially empty', function() {
 
-      permissionsFunctions.permissions.should.have.type('object')
+      permissionsFunctions.__get__('_permissions').should.have.type('object')
         .and.be.empty;
 
     });
