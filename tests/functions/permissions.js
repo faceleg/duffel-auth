@@ -3,11 +3,18 @@ var should = require('should'),
   permissionsFunctions = rewire('../../lib/functions/permissions');
 
 /**
+ * @return {Object} The _permissions object
+ */
+getPermissions = function() {
+  return permissionsFunctions.__get__('_permissions');
+}
+
+/**
  * Clear the permissions object between each test.
  */
 beforeEach(function clearPermissions() {
-  Object.keys(permissionsFunctions.__get__('_permissions')).forEach(function(key) {
-    delete permissionsFunctions.__get__('_permissions')[key];
+  Object.keys(getPermissions()).forEach(function(key) {
+    delete getPermissions()[key];
   });
 });
 
@@ -23,24 +30,24 @@ describe('permissions', function() {
 
       permissionsFunctions.addPermission('/test/uri', 'GET', 'test-permission');
 
-      permissionsFunctions.__get__('_permissions')['/test/uri'].should.have.property('get');
+      getPermissions()['/test/uri'].should.have.property('get');
     });
 
     it('should apply the given arguments to the permissions object appropriately', function() {
 
       permissionsFunctions.addPermission('/test/uri', 'GET', 'test-permission');
 
-      permissionsFunctions.__get__('_permissions').should.have.type('object')
+      getPermissions().should.have.type('object')
         .with.property('/test/uri')
         .with.property('get', 'test-permission')
 
     });
   });
 
-  describe('#permissions', function() {
+  describe('#_permissions', function() {
     it('should be initially empty', function() {
 
-      permissionsFunctions.__get__('_permissions').should.have.type('object')
+      getPermissions().should.have.type('object')
         .and.be.empty;
 
     });
