@@ -33,6 +33,7 @@
     "string": "1.5.x"
   },
   "scripts": {
-    "test": "mocha $(find tests -name '*.js') -R spec"
+    "test": "mocha tests --recursive -R spec",
+    "autotest": "mocha tests -w --recursive -R spec"
   }
 }
