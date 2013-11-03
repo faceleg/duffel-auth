@@ -31,7 +31,8 @@
     "validator": "1.2.x",
     "forms": "0.2.x",
     "underscore": "1.5.x",
-    "string": "1.5.x"
+    "string": "1.5.x",
+    "tea-error": "0.1.x"
   },
   "scripts": {
     "test": "mocha tests --recursive -R spec",
