@@ -62,7 +62,7 @@ describe('permissions', function() {
       (permissionsFunctions.addPermission()).should.throw('InvalidArgumentError');
     });
 
-    it('should throw an InvalidArgumentError if no arguments are supplied', function() {
+    it('should throw an InvalidArgumentError if invalid arguments are supplied', function() {
 
       (permissionsFunctions.addPermission(1, 2, 3)).should.throw('InvalidArgumentError');
     });
