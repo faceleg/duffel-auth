@@ -119,4 +119,34 @@ describe('permissions', function() {
     });
   });
 
+  describe('#flatPermissionTree()', function() {
+
+    beforeEach(function primePermissions() {
+      permissionsFunctions.addPermission('/', 'get', 'permission-root-get');
+      permissionsFunctions.addPermission('/', 'del', 'permission-root-del');
+      permissionsFunctions.addPermission('/', 'put', 'permission-root-put');
+      permissionsFunctions.addPermission('/child', 'put', 'permission-child-put');
+      permissionsFunctions.addPermission('/child/second', 'put', 'permission-child-second-put');
+      permissionsFunctions.addPermission('/child/second/third', 'put', 'permission-child-third-put');
+    });
+
+    it('should return a flat permission tree containing appropriate items', function() {
+
+      permissionsFunctions.flatPermissionTree().should.have.length(4);
+    });
+
+    it('should return a flat permisson tree with parent and child populated appropriately', function() {
+
+      var flatPermissionTree = permissionsFunctions.flatPermissionTree();
+
+      flatPermissionTree.forEach(function(permission) {
+        if (permission.uri == '/child') {
+          permission.should.have.property('parent', '/');
+        } else if (permission.uri == '/') {
+          permission.should.not.have.property('parent');
+        }
+      });
+    });
+  });
+
 });
