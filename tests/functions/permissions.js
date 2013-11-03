@@ -99,6 +99,17 @@ describe('permissions', function() {
       permissionsFunctions.addPermission('/protected/further/deeper', 'GET', 'rabbit-hole');
     });
 
+    it('should throw an InvalidArgumentError if no arguments are supplied', function() {
+
+      (permissionsFunctions.lookupPermissions()).should.throw('InvalidArgumentError');
+    });
+
+    it('should throw an InvalidArgumentError if invalid arguments are supplied', function() {
+
+      (permissionsFunctions.lookupPermissions(1, 'verb')).should.throw('InvalidArgumentError');
+      (permissionsFunctions.lookupPermissions('uri', 2)).should.throw('InvalidArgumentError');
+    });
+
     it('should find the permission representing the given uri and verb in the tree', function() {
 
       permissionsFunctions.lookupPermissions('/protected/further', 'GET').should.contain('login-and-more');
