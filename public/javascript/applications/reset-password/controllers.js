@@ -10,7 +10,7 @@ function ResetPasswordController($scope, $http, $window) {
     if ($scope.user.password == '') return true;
     if ($scope.user.repeatPassword == '') return true;
     return $scope.user.password == $scope.user.repeatPassword;
-  }
+  };
 
   $scope.submit = function(form) {
     $scope.submitting = true;
@@ -27,13 +27,13 @@ function ResetPasswordController($scope, $http, $window) {
         if (!data || !data.error) {
           $scope.formError = 'Server error, please try again';
         }
-        for (key in data.error.errors) {
+        for (var key in data.error.errors) {
           form[key].$error.mongoose = data.error.errors[key].type;
         }
         $scope.submitting = false;
     });
   };
-};
+}
 
 angular.module('resetPassword.controllers', []).
   controller('ResetPasswordController', ['$scope', '$http', '$window', ResetPasswordController]);
