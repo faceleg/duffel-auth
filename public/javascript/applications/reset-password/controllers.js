@@ -7,8 +7,8 @@ function ResetPasswordController($scope, $http, $window) {
   $scope.formError = false;
 
   $scope.passwordsMatch = function() {
-    if ($scope.user.password == '') return true;
-    if ($scope.user.repeatPassword == '') return true;
+    if (!$scope.user.password) return true;
+    if (!$scope.user.repeatPassword) return true;
     return $scope.user.password == $scope.user.repeatPassword;
   };
 
