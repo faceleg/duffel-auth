@@ -1,4 +1,5 @@
-'use strict';
+(function() {
+  'use strict';
 
 function ResetPasswordController($scope, $http, $window) {
   $scope.user = {};
@@ -36,3 +37,5 @@ function ResetPasswordController($scope, $http, $window) {
 
 angular.module('resetPassword.controllers', []).
   controller('ResetPasswordController', ['$scope', '$http', '$window', ResetPasswordController]);
+
+})();
