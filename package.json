@@ -39,9 +39,9 @@
   },
   "scripts": {
     "test": "mocha tests --recursive -R spec",
-    "autotest": "mocha tests -w --recursive -R spec"
+    "autotest": "mocha tests -w --recursive -R spec",
     "postinstall": "bower install --allow-root",
     "postupdate": "bower install --allow-root"
   },
-  "homepage": "https://github.com/BrownPaperBag/duffel-auth",
+  "homepage": "https://github.com/BrownPaperBag/duffel-auth"
 }
