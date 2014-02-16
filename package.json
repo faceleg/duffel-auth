@@ -1,7 +1,10 @@
 {
   "name": "duffel-auth",
-  "version": "0.2.1",
-  "author": "Michael Robinson <mike@pagesofinterest.net>",
+  "version": "0.2.5",
+  "author": {
+    "name": "Michael Robinson",
+    "email": "mike@pagesofinterest.net"
+  },
   "description": "Provides user management and the ability to protect resources with permission based access control",
   "contributors": [
     {
@@ -37,5 +40,8 @@
   "scripts": {
     "test": "mocha tests --recursive -R spec",
     "autotest": "mocha tests -w --recursive -R spec"
-  }
+    "postinstall": "bower install --allow-root",
+    "postupdate": "bower install --allow-root"
+  },
+  "homepage": "https://github.com/BrownPaperBag/duffel-auth",
 }
