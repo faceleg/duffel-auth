@@ -1,0 +1,7 @@
+{
+  "name": "duffel-auth",
+  "dependencies": {
+    "ng-grid": "latest"
+  }
+}
+
