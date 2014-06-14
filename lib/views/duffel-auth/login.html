@@ -1,8 +1,0 @@
-{% extends "/layouts/default.html" %}
-
-{% block title %}Login - {% endblock %}
-
-{% block content %}
-    {% include "/duffel-auth/partials/login-form.html" %}
-    {$ assetify.js.emit('login-form') $}
-{% endblock %}

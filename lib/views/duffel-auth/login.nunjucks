@@ -1,0 +1,7 @@
+{% extends "/layouts/default.nunjucks" %}
+
+{% block title %}Login{% endblock %}
+
+{% block content %}
+    {% include "/duffel-auth/partials/login-form.nunjucks" %}
+{% endblock %}
