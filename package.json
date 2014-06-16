@@ -35,7 +35,8 @@
     "forms": "",
     "underscore": "",
     "string": "",
-    "tea-error": ""
+    "tea-error": "",
+    "mongoose-timestamp": ""
   },
   "scripts": {
     "test": "mocha tests --recursive -R spec",
