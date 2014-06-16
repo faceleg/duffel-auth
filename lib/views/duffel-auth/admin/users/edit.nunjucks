@@ -1,13 +1,13 @@
-{% extends "/layouts/default.html" %}
+{% extends "/layouts/default-admin.nunjucks" %}
 
-{% block title %}Edit User - {% endblock %}
+{% block title %}{$ title $}{% endblock %}
 
 {% block content %}
     <div class="duffel-admin-wrapper">
-        <h1 class="text-center">Edit User</h1>
+      <h1 class="text-center">{$ title $}</h1>
         <div class="angular-application" application-name="admin-users"
             ng-controller="EditController">
-            <form name="editForm" method="post" action="/users/admin/user/{$ user.id $}">
+            <form name="editForm" method="post" action="/users/admin/{$ user.id $}">
                 {$ form.toHTML() $}
                 <input type="hidden" name="_csrf" value="{$ _csrf $}">
                 <a href="/users/admin/users" class="btn">Cancel</a>
@@ -15,5 +15,4 @@
             </form>
         </div>
     </div>
-    {$ assetify.js.emit('duffel-auth-admin') $}
 {% endblock %}
