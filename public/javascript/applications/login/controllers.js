@@ -3,7 +3,8 @@
 
   angular.module('login.controllers', [])
     .controller('LoginController', [
-      '$scope', 'User', '$window', '$cookies', '$cookieStore', function LoginController($scope, User, $window, $cookies, $cookieStore) {
+      '$scope', 'User', '$window', '$cookies', '$cookieStore',
+      function LoginController($scope, User, $window, $cookies, $cookieStore) {
 
     $scope.user = {};
     $scope.submitting = false;
