@@ -9,9 +9,8 @@
             ng-controller="IndexController">
             <div>
 
-              <a class="btn btn-default" href="/users/admin/create">Create User</a>
-              <button ng-click="adminUserTableParams.reload()" class="btn btn-default">Reload</button>
-              <button ng-click="adminUserTableParams.sorting({})" class="btn btn-default">Clear sorting</button>
+              <button ng-click="adminUserTableParams.reload()" class="btn btn-default"><i class="glyphicon glyphicon-refresh"></i> Reload</button>
+              <a class="btn btn-primary" href="/users/admin/create"><i class="glyphicon glyphicon-plus"></i> Create User</a>
 
               <table ng-table="adminUserTableParams" show-filter="true" class="table" cg-busy="userPromise">
                 <tbody>
@@ -19,8 +18,14 @@
                     <td data-title="'Email'" filter="{ 'email': 'text' }" sortable="'email'">
                       {{ user.email }}
                     </td>
-                    <td data-title="'Super'" sortable="'super'">
-                      {{ user.super }}
+                    <td data-title="'Status'" filter="{ 'status': 'text' }" sortable="'status'">
+                      {{ user.status }}
+                    </td>
+                    <td data-title="'Permissions'" filter="{ 'permissions': 'text' }">
+                      {{ user.permissions.join(', ') }}
+                    </td>
+                    <td data-title="'Super'">
+                      {{ user.super ? 'Yes' : 'No' }}
                     </td>
                     <td data-title="'Actions'">
                       <a href="/users/admin/{{ user.id }}">Edit</a>
