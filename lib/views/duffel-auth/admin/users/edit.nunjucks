@@ -7,10 +7,10 @@
       <h1 class="text-center">{$ title $}</h1>
         <div class="angular-application" application-name="admin-users"
             ng-controller="EditController">
-            <form name="editForm" method="post" action="/users/admin/{$ user.id $}">
+            <form name="editForm" method="post" action="/users/admin/{$ editingUser.id $}" autocomplete="off">
                 {$ form.toHTML() $}
                 <input type="hidden" name="_csrf" value="{$ _csrf $}">
-                <a href="/users/admin/users" class="btn">Cancel</a>
+                <a href="/users/admin" class="btn">Cancel</a>
                 <button type="submit" class="btn btn-success">Submit <i class="icon-arrow-right"></i></button>
             </form>
         </div>
