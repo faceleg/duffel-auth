@@ -1,14 +1,34 @@
-{% extends "/layouts/default.html" %}
+{% extends "/layouts/default-admin.nunjucks" %}
 
-{% block title %}User Administration - {% endblock %}
+{% block title %}User Administration{% endblock %}
 
 {% block content %}
     <div class="duffel-admin-wrapper">
         <h1 class="text-center">User Administration</h1>
-        <div class="angular-application" application-name="admin-users"
+        <div class="ng-application" application-name="admin-users" 
             ng-controller="IndexController">
-            <duffel-table resource="user" headers="headers"></duffel-table>
+            <div>
+
+              <a class="btn btn-default" href="/users/admin/create">Create User</a>
+              <button ng-click="adminUserTableParams.reload()" class="btn btn-default">Reload</button>
+              <button ng-click="adminUserTableParams.sorting({})" class="btn btn-default">Clear sorting</button>
+
+              <table ng-table="adminUserTableParams" show-filter="true" class="table" cg-busy="userPromise">
+                <tbody>
+                  <tr ng-repeat="user in $data">
+                    <td data-title="'Email'" filter="{ 'email': 'text' }" sortable="'email'">
+                      {{ user.email }}
+                    </td>
+                    <td data-title="'Super'" sortable="'super'">
+                      {{ user.super }}
+                    </td>
+                    <td data-title="'Actions'">
+                      <a href="/users/admin/{{ user.id }}">Edit</a>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
         </div>
     </div>
-    {$ assetify.js.emit('duffel-auth-admin') $}
 {% endblock %}
