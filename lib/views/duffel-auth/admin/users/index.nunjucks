@@ -5,7 +5,7 @@
 {% block content %}
     <div class="duffel-admin-wrapper">
         <h1 class="text-center">User Administration</h1>
-        <div class="ng-application" application-name="admin-users" 
+        <div class="ng-application" application-name="admin-users"
             ng-controller="IndexController">
             <div>
 
@@ -20,9 +20,6 @@
                     </td>
                     <td data-title="'Status'" filter="{ 'status': 'text' }" sortable="'status'">
                       {{ user.status }}
-                    </td>
-                    <td data-title="'Permissions'" filter="{ 'permissions': 'text' }">
-                      {{ user.permissions.join(', ') }}
                     </td>
                     <td data-title="'Super'">
                       {{ user.super ? 'Yes' : 'No' }}
