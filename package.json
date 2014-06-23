@@ -30,13 +30,11 @@
     "passport": "",
     "passport-local": "",
     "bcrypt": "",
-    "mongoose": "",
     "validator": "",
     "forms": "",
     "underscore": "",
     "string": "",
-    "tea-error": "",
-    "mongoose-timestamp": ""
+    "tea-error": ""
   },
   "scripts": {
     "test": "mocha tests --recursive -R spec",
