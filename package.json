@@ -34,7 +34,9 @@
     "forms": "",
     "underscore": "",
     "string": "",
-    "tea-error": ""
+    "tea-error": "",
+    "q": "",
+    "async": ""
   },
   "scripts": {
     "test": "mocha tests --recursive -R spec",
