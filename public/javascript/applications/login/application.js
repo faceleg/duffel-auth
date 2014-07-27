@@ -1,5 +1,7 @@
-'use strict';
+(function() {
+  'use strict';
 
-angular.module('login', [
-  'user', 'login.controllers', 'required', 'ngCookies'
-]);
+  angular.module('login', [
+    'user', 'login.controllers', 'ngCookies'
+  ]);
+})();

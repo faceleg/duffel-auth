@@ -1,0 +1,36 @@
+{% extends "/layouts/default-admin.nunjucks" %}
+
+{% block title %}User Administration{% endblock %}
+
+{% block content %}
+    <div class="duffel-admin-wrapper">
+        <h1 class="text-center">User Administration</h1>
+        <div class="ng-application" application-name="admin-users"
+            ng-controller="IndexController">
+            <div>
+
+              <button ng-click="adminUserTableParams.reload()" class="btn btn-default"><i class="glyphicon glyphicon-refresh"></i> Reload</button>
+              <a class="btn btn-primary" href="/users/admin/create"><i class="glyphicon glyphicon-plus"></i> Create User</a>
+
+              <table ng-table="adminUserTableParams" show-filter="true" class="table" cg-busy="userPromise">
+                <tbody>
+                  <tr ng-repeat="user in $data">
+                    <td data-title="'Email'" filter="{ 'email': 'text' }" sortable="'email'">
+                      {{ user.email }}
+                    </td>
+                    <td data-title="'Status'" filter="{ 'status': 'text' }" sortable="'status'">
+                      {{ user.status }}
+                    </td>
+                    <td data-title="'Super'">
+                      {{ user.super ? 'Yes' : 'No' }}
+                    </td>
+                    <td data-title="'Actions'">
+                      <a href="/users/admin/{{ user.id }}">Edit</a>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+        </div>
+    </div>
+{% endblock %}

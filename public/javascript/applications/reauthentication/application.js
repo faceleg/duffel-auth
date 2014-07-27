@@ -1,5 +1,7 @@
-'use strict';
+(function() {
+  'use strict';
 
-angular.module('reauthentication', [
-  'authentication', 'ui.bootstrap', 'reauthentication.controllers'
-]);
+  angular.module('reauthentication', [
+    'authentication', 'ui.bootstrap', 'reauthentication.controllers'
+  ]);
+})();

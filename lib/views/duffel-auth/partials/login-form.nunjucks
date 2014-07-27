@@ -1,0 +1,39 @@
+{% block content %}
+  <div class="container login-wrapper ng-application" application-name="login"
+      ng-controller="LoginController" ng-cloak>
+      {% cmsblock { name: "login-form-header" } %}
+      <p class="lead text-center">Login</p>
+      {% endcmsblock %}
+      <form class="container login-inner" action=""
+          ng-init="redirectUri = '{$ redirectUri $}'" autocomplete="off"
+          method="post" ng-submit="login()" novalidate>
+          <div ng-cloak ng-show="error" class="alert alert-error">
+              <div ng-switch on="error">
+                  <div ng-switch-when="401">
+                      <strong>Invalid credentials</strong>
+                  </div>
+                  <div ng-switch-default>
+                      <strong>Unexpected Error</strong> Please try again.
+                  </div>
+              </div>
+          </div>
+          <fieldset>
+              <label for="email">Email</label>
+              <input ng-model="user.email" type="email" name="email" required
+                  autocomplete="off" placeholder="you@domain.com" id="email" />
+          </fieldset>
+          <fieldset>
+              <label for="password">Password</label>
+              <input ng-model="user.password" type="password" name="password"
+                  autocomplete="off" required placeholder="your password" id="password" />
+          </fieldset>
+          <input ng-model="user._csrf" ng-init="user._csrf = '{$ _csrf $}'"
+              type="hidden" name="_csrf" value="{$ _csrf $}" />
+          <div class="text-right">
+              <a target="_self" href="/register" class="btn btn-info">Register</a>
+              <button type="submit" class="btn btn-success">Login <i ng-class="{'icon-arrow-right':!submitting, 'icon-spinner icon-spin':submitting}"></i></button>
+          </div>
+          <a target="_self" class="pull-right" href="/forgot-password">Forgot password</a>
+      </form>
+  </div>
+{% endblock %}
